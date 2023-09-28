@@ -16,24 +16,27 @@ public class Driver {
     public static WebDriver getDriver() {
         if (driver == null) {
             switch (ConfigReader.getProperty("browser")) {
-                case "chrome" ->
+
+                case "chrome":
                     //WebDriverManager.chromedriver().setup();
 
-                        driver = new ChromeDriver();
-                case "headlesschrome" -> {
+                    driver = new ChromeDriver();
+                    break;
+                case "headlesschrome":
                     ChromeOptions options = new ChromeOptions();
                     options.addArguments("--headless=new");
                     driver = new ChromeDriver(options);
-                }
-                case "firefox" ->
+                    break;
+                case "firefox":
                     // WebDriverManager.firefoxdriver().setup();
 
-                        driver = new FirefoxDriver();
-                case "edge" ->
+                    driver = new FirefoxDriver();
+                    break;
+                case "edge":
                     // WebDriverManager.edgedriver().setup();
 
-                        driver = new EdgeDriver();
-
+                    driver = new EdgeDriver();
+                    break;
                 //case "chrome":
                 //    WebDriverManager.chromedriver().setup();
                 //    ChromeOptions co = new ChromeOptions();

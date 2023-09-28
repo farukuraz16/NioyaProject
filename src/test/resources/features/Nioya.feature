@@ -68,7 +68,10 @@ Feature: User can work on Nioya API
   Scenario: User can assert the projects and tasks
     When set up
     When go to URL and login
-    And search the project "Marvel" and assert the page
+    And search the project "test1234" and assert the page
+    Then assert the tasks "Ahmet" "bug" "bug2"
+
+    #And search the project "Marvel" and assert the page
     #Then assert the tasks "Ironman" "Spiderman" "Hulk"
     #And search the project "Avengers" and assert the page
     #Then assert the tasks "Captain Marvel" "Thor" "Natasha"
