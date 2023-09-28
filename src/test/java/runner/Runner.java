@@ -6,10 +6,11 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        
-        strict = true,
-        plugin = {
-                "pretty", //Steplerimi konsolda görebilmek için
+
+        plugin = {"pretty",
+                "json:target/json-report/cucumber.json",
+                "html:target/cucumber-reports.json",
+                "junit:target/cucumber-reports/Cucumber.xml",
         },
         
         
@@ -18,7 +19,7 @@ import org.junit.runner.RunWith;
         
         //path of step definitons
         glue = "stepdefinitions",
-        tags = "@nioyaAPI",
+        tags = "@UIAssert",
         dryRun = false
         
 )
