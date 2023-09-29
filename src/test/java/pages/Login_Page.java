@@ -12,7 +12,8 @@ import utilities.ReusableMethods;
 public class Login_Page {
     WebDriver driver;
 
-    public Login_Page(){
+    public Login_Page(WebDriver driver){
+        this.driver = driver;
         PageFactory.initElements(Driver.getDriver(),this);
     }
     @FindBy(xpath ="(//label[text()='Email address']/following::input)[1]" )

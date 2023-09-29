@@ -70,7 +70,6 @@ Feature: User can work on Nioya API
     When go to URL and login
     And search the project "test1234" and assert the page
     Then assert the tasks "Ahmet" "bug" "bug2"
-
     #And search the project "Marvel" and assert the page
     #Then assert the tasks "Ironman" "Spiderman" "Hulk"
     #And search the project "Avengers" and assert the page
@@ -78,7 +77,6 @@ Feature: User can work on Nioya API
     #And search the project "DC" and assert the page
     #Then assert the tasks "Superman" "Batman" "Wonder Woman"
     #Then tear down
-
 
 
   @dT

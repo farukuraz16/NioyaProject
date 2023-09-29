@@ -5,10 +5,11 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.Login_Page;
 import pages.Main_Page;
+import utilities.Driver;
 
 public class UI_Stepdefinitions {
-    Login_Page loginPage = new Login_Page();
-    Main_Page mainPage = new Main_Page();
+    Login_Page loginPage = new Login_Page(Driver.getDriver());
+    Main_Page mainPage = new Main_Page(Driver.getDriver());
 
     @When("go to URL and login")
     public void goToURLAndLogin() {
@@ -37,4 +38,5 @@ public class UI_Stepdefinitions {
     public void tearDown() {
         mainPage.tearDown();
     }
+
 }

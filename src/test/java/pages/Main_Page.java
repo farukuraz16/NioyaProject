@@ -13,12 +13,15 @@ import java.time.Duration;
 
 
 public class Main_Page {
+
+    public Main_Page(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(Driver.getDriver(), this);
+    }
+
     WebDriver driver;
     Actions actions = new Actions(Driver.getDriver());
 
-
-    public Main_Page() {PageFactory.initElements(Driver.getDriver(),this);
-    }
 
     @FindBy(xpath = "//div[@class='TopbarSearchInputButton-baseButton']")
     public WebElement searchBox;
@@ -26,35 +29,24 @@ public class Main_Page {
     @FindBy(xpath = "(//span[contains(@class,'TypographyPresentation TypographyPresentation--m')])[3]")
     public WebElement projectButton;
 
-    @FindBy(xpath ="(//div[text()='test1234'])" )
-    public WebElement project;
 
-    @FindBy(xpath ="//div[@aria-label='Ahmet']" )
-    public WebElement task01;
-    @FindBy(xpath ="//div[@aria-label='bug']" )
-    public WebElement task02;
-    @FindBy(xpath ="//div[@aria-label='bug2']" )
-    public WebElement task03;
 
     public void searchTheProjectAndAssertThePage(String projectName) {
 
         actions.moveToElement(searchBox).click().sendKeys(projectName).sendKeys(Keys.ENTER).perform();
-
-        ReusableMethods.waitForVisibility(projectButton, 5);
         projectButton.click();
-        ReusableMethods.waitFor(10);
-       // WebElement project = driver.findElement(By.xpath("//div[text()='" + projectName + "']"));
-        //System.out.println("project = " + project);
-        //actions.moveToElement(project).click().perform();
+
+        WebElement project = driver.findElement(By.xpath("//div[text()='" + projectName + "']"));
+        System.out.println("project = " + project);
         project.click();
 
     }
 
     public void assertTheTasks(String taskName01, String taskName02, String taskName03) {
 
-        //WebElement task01 = driver.findElement(By.xpath("//div[@aria-label='" + taskName01 + "']"));
-        //WebElement task02 = driver.findElement(By.xpath("//div[@aria-label='" + taskName02 + "']"));
-        //WebElement task03 = driver.findElement(By.xpath("//div[@aria-label='" + taskName03 + "']"));
+        WebElement task01 = driver.findElement(By.xpath("//div[@aria-label='" + taskName01 + "']"));
+        WebElement task02 = driver.findElement(By.xpath("//div[@aria-label='" + taskName02 + "']"));
+        WebElement task03 = driver.findElement(By.xpath("//div[@aria-label='" + taskName03 + "']"));
 
         System.out.println("task01.getText() = " + task01.getText());
         System.out.println("task02.getText() = " + task02.getText());
@@ -76,4 +68,6 @@ public class Main_Page {
     public void tearDown() {
         Driver.closeDriver();
     }
+
+
 }

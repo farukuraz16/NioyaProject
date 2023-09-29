@@ -10,33 +10,29 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class Driver {
 
 
-
     private static WebDriver driver;
 
     public static WebDriver getDriver() {
         if (driver == null) {
             switch (ConfigReader.getProperty("browser")) {
-
-                case "chrome":
+                case "chrome" ->
                     //WebDriverManager.chromedriver().setup();
 
-                    driver = new ChromeDriver();
-                    break;
-                case "headlesschrome":
+                        driver = new ChromeDriver();
+                case "headlesschrome" -> {
                     ChromeOptions options = new ChromeOptions();
                     options.addArguments("--headless=new");
                     driver = new ChromeDriver(options);
-                    break;
-                case "firefox":
+                }
+                case "firefox" ->
                     // WebDriverManager.firefoxdriver().setup();
 
-                    driver = new FirefoxDriver();
-                    break;
-                case "edge":
+                        driver = new FirefoxDriver();
+                case "edge" ->
                     // WebDriverManager.edgedriver().setup();
 
-                    driver = new EdgeDriver();
-                    break;
+                        driver = new EdgeDriver();
+
                 //case "chrome":
                 //    WebDriverManager.chromedriver().setup();
                 //    ChromeOptions co = new ChromeOptions();
